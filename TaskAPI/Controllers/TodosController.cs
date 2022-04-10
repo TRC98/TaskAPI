@@ -15,7 +15,7 @@ namespace TaskAPI.Controllers
         private readonly ITodoRepository _todoService;
         public TodosController(ITodoRepository repository)
         {
-            _todoService = new TodoService();
+            _todoService = repository;
         }
         [HttpGet("{id?}")]
         public IActionResult GetTodos(int? id)
