@@ -11,6 +11,7 @@ namespace TaskAPI.DataAccess
     public class TodoDbContext : DbContext
     {
         public DbSet<Todo> Todos { get; set; }
+        public DbSet<Author> Authors { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -20,14 +21,40 @@ namespace TaskAPI.DataAccess
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Todo>().HasData(new Todo
+            modelBuilder.Entity<Author>().HasData(new Author[]
             {
-                Id = 1,
-                Title = "Get books for school - DB",
-                Description = "Get some text books for school",
-                Created = DateTime.Now,
-                Due = DateTime.Now.AddDays(5),
-                Status = TodoStatus.Now
+                new Author{Id=1,FullName="Fiqri Ismail"},
+                new Author{Id=2,FullName="Prabashwara Bandara"},
+                new Author{Id=3,FullName="Chaminda Sooriyapperuma"},
+                new Author{Id=4,FullName="Hansamali Gamage"}
+            });
+            modelBuilder.Entity<Todo>().HasData(new Todo[] {
+                new Todo{
+                    Id = 1,
+                    Title = "Get books for school - DB",
+                    Description = "Get some text books for school",
+                    Created = DateTime.Now,
+                    Due = DateTime.Now.AddDays(5),
+                    Status = TodoStatus.Now,
+                    AuthorId=1
+                },
+                new Todo{
+                    Id = 2,
+                    Title = "Need some grocceries",
+                    Description = "Go to supermarket and buy some stuff",
+                    Created = DateTime.Now,
+                    Due = DateTime.Now.AddDays(5),
+                    Status = TodoStatus.Now,
+                    AuthorId=1
+                },new Todo{
+                    Id = 3,
+                    Title = "Purchase camera",
+                    Description = "Buy new camera",
+                    Created = DateTime.Now,
+                    Due = DateTime.Now.AddDays(5),
+                    Status = TodoStatus.Now,
+                    AuthorId=2
+                },
             });
         }
     }

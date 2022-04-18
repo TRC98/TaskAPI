@@ -4,11 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskAPI.Services;
+using TaskAPI.Services.Todos;
 
 namespace TaskAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/todos")]
     [ApiController]
     public class TodosController : ControllerBase
     {
@@ -17,17 +17,26 @@ namespace TaskAPI.Controllers
         {
             _todoService = repository;
         }
-        [HttpGet("{id?}")]
-        public IActionResult GetTodos(int? id)
+        [HttpGet]
+        public IActionResult GetTodos()
         {
             var mytodos = _todoService.AllTodos();
-
-            if (id == null) return Ok(mytodos);
-
-            mytodos = mytodos.Where(t => t.Id == id).ToList();
+            if(mytodos == null)
+            {
+                return NotFound();
+            }
             return Ok(mytodos);
         }
-
+        [HttpGet("{Id}")]
+        public IActionResult GetTodo(int Id)
+        {
+            var mytodo = _todoService.GetTodo(Id);
+            if (mytodo == null)
+            {
+                return NotFound();
+            }
+            return Ok(mytodo);
+        }
         [HttpPut]
         public IActionResult UpdateTask()
         {

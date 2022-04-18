@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskAPI.DataAccess;
 
 namespace TaskAPI.DataAccess.Migrations
 {
     [DbContext(typeof(TodoDbContext))]
-    partial class TodoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220413101151_AuthorEntityAndData")]
+    partial class AuthorEntityAndData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,7 +33,7 @@ namespace TaskAPI.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Author");
 
                     b.HasData(
                         new
@@ -92,9 +94,9 @@ namespace TaskAPI.DataAccess.Migrations
                         {
                             Id = 1,
                             AuthorId = 1,
-                            Created = new DateTime(2022, 4, 13, 20, 44, 45, 405, DateTimeKind.Local).AddTicks(4611),
+                            Created = new DateTime(2022, 4, 13, 15, 41, 51, 122, DateTimeKind.Local).AddTicks(2079),
                             Description = "Get some text books for school",
-                            Due = new DateTime(2022, 4, 18, 20, 44, 45, 405, DateTimeKind.Local).AddTicks(8393),
+                            Due = new DateTime(2022, 4, 18, 15, 41, 51, 122, DateTimeKind.Local).AddTicks(8488),
                             Status = 0,
                             Title = "Get books for school - DB"
                         },
@@ -102,9 +104,9 @@ namespace TaskAPI.DataAccess.Migrations
                         {
                             Id = 2,
                             AuthorId = 1,
-                            Created = new DateTime(2022, 4, 13, 20, 44, 45, 405, DateTimeKind.Local).AddTicks(9490),
+                            Created = new DateTime(2022, 4, 13, 15, 41, 51, 123, DateTimeKind.Local).AddTicks(150),
                             Description = "Go to supermarket and buy some stuff",
-                            Due = new DateTime(2022, 4, 18, 20, 44, 45, 405, DateTimeKind.Local).AddTicks(9497),
+                            Due = new DateTime(2022, 4, 18, 15, 41, 51, 123, DateTimeKind.Local).AddTicks(159),
                             Status = 0,
                             Title = "Need some grocceries"
                         },
@@ -112,9 +114,9 @@ namespace TaskAPI.DataAccess.Migrations
                         {
                             Id = 3,
                             AuthorId = 2,
-                            Created = new DateTime(2022, 4, 13, 20, 44, 45, 405, DateTimeKind.Local).AddTicks(9506),
+                            Created = new DateTime(2022, 4, 13, 15, 41, 51, 123, DateTimeKind.Local).AddTicks(174),
                             Description = "Buy new camera",
-                            Due = new DateTime(2022, 4, 18, 20, 44, 45, 405, DateTimeKind.Local).AddTicks(9507),
+                            Due = new DateTime(2022, 4, 18, 15, 41, 51, 123, DateTimeKind.Local).AddTicks(176),
                             Status = 0,
                             Title = "Purchase camera"
                         });
