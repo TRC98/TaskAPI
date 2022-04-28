@@ -11,14 +11,14 @@ namespace TaskAPI.Services.Todos
     public class TodoSqlServerService : ITodoRepository
     {
         private readonly TodoDbContext _context = new TodoDbContext();
-        public List<Todo> AllTodos()
+        public List<Todo> AllTodos(int AuthorId)
         {
-            return _context.Todos.ToList();
+            return _context.Todos.Where(t=>t.AuthorId==AuthorId).ToList();
         }
 
-        public Todo GetTodo(int Id)
+        public Todo GetTodo(int AuthorId, int Id)
         {
-            return _context.Todos.Find(Id);
+            return _context.Todos.Where(t=>t.Id==Id && t.AuthorId==AuthorId).FirstOrDefault();
         }
     }
 }

@@ -37,6 +37,7 @@ namespace TaskAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TaskAPI", Version = "v1" });
             });
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<ITodoRepository, TodoSqlServerService>();
             services.AddScoped<IAuthorRepository, AuthorSqlServerService>();
