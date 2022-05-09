@@ -22,9 +22,9 @@ namespace TaskAPI.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public ActionResult<ICollection<AuthorDto>> GetAuthors()
+        public ActionResult<ICollection<AuthorDto>> GetAuthors(string job,string search)
         {
-            var authors = _services.GetAllAuthors();
+            var authors = _services.GetAllAuthors(job,search);
             if (authors == null)
             {
                 return NotFound();

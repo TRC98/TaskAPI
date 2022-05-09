@@ -11,5 +11,6 @@ namespace TaskAPI.Services.Models
         public int Id { get; set; }
         public string FullName { get; set; }
         public string Adderess { get; set; }
+        public string JobRole { get; set; }
     }
 }
