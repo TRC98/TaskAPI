@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskAPI.DataAccess;
 using TaskAPI.Models;
+using TaskAPI.Services.Models;
 
 namespace TaskAPI.Services.Authors
 {
     public class AuthorSqlServerService : IAuthorRepository
     {
         private readonly TodoDbContext _context = new TodoDbContext();
+
         public List<Author> GetAllAuthors()
         {
             return _context.Authors.ToList();
@@ -40,5 +42,13 @@ namespace TaskAPI.Services.Authors
         {
             return _context.Authors.Find(Id);
         }
+        public Author AddAuthor(Author author)
+        {
+            _context.Authors.Add(author);
+            _context.SaveChanges();
+            return _context.Authors.Find(author.Id);
+
+        }
+
     }
 }
