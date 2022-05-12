@@ -51,7 +51,17 @@ namespace TaskAPI.Services.Todos
             return todos;
         }
 
+        public void deleteTodo(Todo todo)
+        {
+            throw new NotImplementedException();
+        }
+
         public Todo GetTodo(int AuthorId, int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateTodo(Todo todo)
         {
             throw new NotImplementedException();
         }
